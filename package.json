@@ -8,6 +8,10 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "nuxt": "^3.1.0"
+    "@morev/vue-transitions": "^2.3.6",
+    "@nuxtjs/tailwindcss": "^6.2.0",
+    "@types/prismjs": "^1.26.0",
+    "nuxt": "^3.1.0",
+    "prismjs": "^1.29.0"
   }
 }
