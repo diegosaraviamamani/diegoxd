@@ -9,21 +9,10 @@ useHead(
         ],
     }),
 )
-const NAV_LINKS = [
-    { name: '_hello', href: '/' },
-    { name: '_about', href: '/about' },
-    { name: '_projects', href: '/projects' },
-    { name: '_contact-me', href: '/_contact-me' },
-]
 
 const isMenuOpen = ref(false)
-watchEffect(() => {
-    if (isMenuOpen.value) {
-        console.log('open')
-    } else {
-        console.log('close')
-    }
-})
+// inject isMenuOpen to child components
+provide('isMenuOpen', isMenuOpen)
 
 </script>
 <template>
@@ -38,12 +27,7 @@ watchEffect(() => {
             <slot />
             <transition-fade>
                 <div v-if="isMenuOpen" class="absolute bg-[#011627] inset-0  top-[3.8rem] flex flex-col">
-                    <nav class="border-b flex flex-col grow" @click="isMenuOpen = false">
-                        <nuxt-link v-for="{ name, href } in NAV_LINKS" :href="href" :key="name"
-                            class="p-4 text-white text-base font-normal">
-                            {{ name }}
-                        </nuxt-link>
-                    </nav>
+                    <nav-bar />
                     <socials-footer />
                 </div>
             </transition-fade>
@@ -52,15 +36,5 @@ watchEffect(() => {
 
 </template>
 <style>
-/* import font fira code */
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
 
-* {
-    font-family: 'Fira Code', monospace;
-    @apply border-[#1E2D3D] box-border;
-}
-
-body {
-    @apply bg-[#010C15];
-}
 </style>
