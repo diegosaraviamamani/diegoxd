@@ -1,15 +1,16 @@
+<script setup lang="ts">
+type Props = { code: string, language: string }
+const { code, language } = defineProps<Props>()
+
+const highlightedCode = ref('')
+
+onMounted(() => {
+    highlightedCode.value = Prism.highlight(code, Prism.languages[language], language)
+})
+</script>
 <template>
     <code v-html="highlightedCode"></code>
 </template>
-
-<script setup lang="ts">
-const { code, language } = defineProps<{
-    code: string
-    language: string
-}>()
-
-const highlightedCode = computed(() => Prism.highlight(code, Prism.languages[language], language))
-</script>
 <style>
 .token.operator,
 .token.entity,
@@ -17,6 +18,5 @@ const highlightedCode = computed(() => Prism.highlight(code, Prism.languages[lan
 .language-css .token.string,
 .style .token.string {
     background-color: transparent !important;
-
 }
 </style>
