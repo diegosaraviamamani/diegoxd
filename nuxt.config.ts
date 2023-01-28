@@ -2,8 +2,8 @@
 export default defineNuxtConfig({
   modules: [
     "@morev/vue-transitions/nuxt",
-    "@nuxtjs/tailwindcss",
     "@nuxtjs/supabase",
+    "@nuxtjs/tailwindcss",
   ],
   app: {
     layoutTransition: { name: "layout", mode: "out-in" },
