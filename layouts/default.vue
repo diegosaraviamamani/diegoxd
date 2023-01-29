@@ -17,7 +17,7 @@ provide('isMenuOpen', isMenuOpen)
 </script>
 <template>
     <div class="bg-[#010C15] text-white min-h-screen w-screen flex flex-col">
-        <div class="m-4 bg-[#011627] flex-grow overflow-hidden border rounded-lg flex flex-col relative">
+        <div class="m-4 md:m-16 bg-[#011627] flex-grow overflow-hidden border rounded-lg flex flex-col relative">
             <header class="border-b flex justify-between items-center">
                 <h1 class="text-[#607B96] text-base p-4">diego-saravia</h1>
                 <button class="text-[#607B96] p-4" @click="isMenuOpen = !isMenuOpen">

@@ -10,6 +10,7 @@
 * {
   font-family: 'Fira Code', monospace;
   @apply border-[#1E2D3D];
+  outline: none;
 }
 
 body {
@@ -35,5 +36,16 @@ body {
 .page-leave-to {
   opacity: 0;
   filter: blur(1rem);
+}
+
+/* remove browser outline in all inputs */
+input:focus,
+textarea:focus,
+select:focus {
+  @apply ring-[#607B96] ring-offset-2 ring-offset-[#011221] ring-opacity-50;
+}
+
+button.btn {
+  @apply text-[#FFFFFF] p-2 w-fit rounded-lg text-sm font-[400] bg-[#1C2B3A] hover:bg-[#607B96] transition-all;
 }
 </style>

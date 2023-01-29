@@ -1,5 +1,5 @@
 <script setup lang="ts">
-definePageMeta({ layout: 'full' })
+definePageMeta({ layout: 'full', name: '_about' })
 </script>
 <template>
     <main>

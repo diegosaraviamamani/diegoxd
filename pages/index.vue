@@ -1,4 +1,5 @@
 <script setup lang="ts">
+definePageMeta({ name: '_hello' })
 const code = ref(`const githubLink = 'https:// github.com/example/url'`)
 </script>
 <template>

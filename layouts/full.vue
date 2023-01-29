@@ -3,7 +3,7 @@ import DefaultLayout from './default.vue'
 </script>
 <template>
     <DefaultLayout>
-        <h2 v-if="$route.path !== '/'" class="text-white text-sm pt-[21px] px-7 pb-7">
+        <h2 v-if="$route.path !== '/'" class="text-white text-sm py-6 px-7">
             {{ $route.name }}
         </h2>
         <div class="grow">
