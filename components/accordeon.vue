@@ -1,13 +1,15 @@
 <script setup lang="ts">
-const { title } = defineProps({ title: { type: String, required: true } })
-const isOpen = ref(false)
+const { defaultOpen } = defineProps({
+    title: { type: String, required: true },
+    defaultOpen: { type: Boolean, default: false },
+})
+const isOpen = ref(defaultOpen)
 </script>
 
 <template>
     <div class="cursor-pointer">
         <p @click="isOpen = !isOpen" class="bg-[#1E2D3D] text-base px-7 py-1">
-            {{ isOpen? '▼': '▶' }}
-            {{ title }}
+            {{ isOpen? '▼': '▶' }} {{ title }}
         </p>
         <transition-expand>
             <template v-if="isOpen">

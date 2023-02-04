@@ -1,5 +1,5 @@
 <script setup lang="ts">
-definePageMeta({ layout: 'full', name: '_contact-me' })
+definePageMeta({ name: '_contact-me' })
 
 const CONTACTS = [
     { name: 'bolivaristadiego@gmail.com', link: 'mailto:bolivaristadiego@gmail.com' },
@@ -12,7 +12,10 @@ const SOCIALS = [
 ]
 </script>
 <template>
-    <main class="flex flex-col">
+    <div class="flex flex-col">
+        <h2 v-if="$route.path !== '/'" class="text-white text-sm py-6 px-7">
+            {{ $route.name }}
+        </h2>
         <accordeon title="contacts">
             <ul class="px-7 my-4 text-[#607B96]">
                 <li class="flex flex-col" v-for="{ link, name } in CONTACTS" :key="name">
@@ -32,5 +35,5 @@ const SOCIALS = [
             </ul>
         </accordeon>
         <contact-form />
-    </main>
+    </div>
 </template>

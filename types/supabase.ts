@@ -32,6 +32,29 @@ export interface Database {
           name?: string
         }
       }
+      projects: {
+        Row: {
+          created_at: string | null
+          id: number
+          link: string
+          tags: string
+          title: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: number
+          link: string
+          tags: string
+          title: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: number
+          link?: string
+          tags?: string
+          title?: string
+        }
+      }
     }
     Views: {
       [_ in never]: never

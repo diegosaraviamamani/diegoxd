@@ -11,6 +11,7 @@
   font-family: 'Fira Code', monospace;
   @apply border-[#1E2D3D];
   outline: none;
+  box-sizing: border-box;
 }
 
 body {
