@@ -2,7 +2,6 @@
 import { Database } from '~~/types/supabase';
 
 definePageMeta({ name: '_projects' })
-
 const client = useSupabaseClient<Database>()
 
 // const { data: projects, error } = await client.from('projects').select('*')
@@ -26,16 +25,6 @@ const tags = computed(() => {
     }
     return allTags
 })
-
-const filteredTags = ref<string[]>([])
-
-const onSelectTag = (tag: string) => {
-    if (filteredTags.value.includes(tag)) {
-        filteredTags.value = filteredTags.value.filter(t => t !== tag)
-    } else {
-        filteredTags.value = [...filteredTags.value, tag]
-    }
-}
 
 const filteredProjects = computed(() => {
     if (projects.value) {
@@ -62,20 +51,28 @@ watchEffect(() => {
 })
 </script>
 <template>
-    <div class="flex flex-col">
-        <h2 v-if="$route.path !== '/'" class="text-white text-sm py-6 px-7">
+    <div class="flex flex-col md:flex-row md:grow">
+        <h2 v-if="$route.path !== '/'" class="text-white text-sm py-6 px-7 md:hidden">
             {{ $route.name }}
         </h2>
-        <accordeon title="projects">
-            <ul class="flex flex-col gap-5 px-7 pt-4">
-                <li v-for="tag in tags" class="flex items-center">
-                    <input type="checkbox" :id="tag" :value="tag" class="bg-[#011221] rounded-lg w-5 h-5" />
-                    <label :for="tag" class="w-full leading-5 pl-5">{{ tag }}</label>
-                </li>
-            </ul>
-        </accordeon>
-        <section class="px-7 py-10 flex flex-col gap-5">
-            <div class="grid grid-cols-[repeat(auto-fill,minmax(17rem,1fr))] gap-5">
+        <div class="md:w-80 shrink-0 md:border-r">
+            <accordeon title="projects" default-open>
+                <ul class="flex flex-col gap-5 px-7 pt-4">
+                    <li v-for="tag in tags" class="flex items-center">
+                        <input type="checkbox" :id="tag" :value="tag" class="bg-[#011221] rounded-lg w-5 h-5" />
+                        <label :for="tag" class="w-full leading-5 pl-5">{{ tag }}</label>
+                    </li>
+                </ul>
+            </accordeon>
+        </div>
+        <section class="flex flex-col gap-5 md:gap-0 md:grow">
+            <div class="hidden md:flex border-b">
+                <span class="border-r px-4 py-2 w-40 text-[#607B96]">
+                    {{ $route.name }}
+                </span>
+            </div>
+            <div
+                class="px-7 md:px-32 py-10 md:py-28 grid grid-cols-[repeat(auto-fill,minmax(17rem,1fr))] md:grid-cols-[repeat(auto-fill,minmax(23rem,1fr))] gap-5 md:max-h-[calc(100vh-11.5rem)] md:overflow-y-auto">
                 <div v-for="{ id, link, title } in projects" :key="id" class="flex flex-col gap-3 ">
                     <h3>Project 1 / {{ title }}</h3>
                     <article

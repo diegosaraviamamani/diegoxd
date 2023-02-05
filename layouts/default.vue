@@ -19,12 +19,16 @@ provide('isMenuOpen', isMenuOpen)
     <div class="bg-[#010C15] text-white min-h-screen w-screen flex flex-col">
         <div class="m-4 bg-[#011627] flex-grow overflow-hidden border rounded-lg flex flex-col relative">
             <header class="border-b flex justify-between items-center">
-                <h1 class="text-[#607B96] text-base p-4">diego-saravia</h1>
+                <nuxt-link href="/" class="text-[#607B96] text-base p-4 md:w-80 md:border-r shrink-0">
+                    diego-saravia
+                </nuxt-link>
                 <button class="text-[#607B96] p-4 md:hidden" @click="isMenuOpen = !isMenuOpen">
                     {{ isMenuOpen? 'x': '☰' }}
                 </button>
+                <nav-bar class="hidden md:flex" />
             </header>
-            <main class="flex flex-col grow max-h-[calc(100vh-6rem)] md:max-h-[calc(100vh-5rem-60px)] overflow-y-auto">
+            <main
+                class="flex flex-col grow max-h-[calc(100vh-6rem)] md:max-h-[calc(100vh-5rem-60px)] overflow-y-auto md:flex-row md:relative">
                 <slot />
             </main>
             <socials-footer class="hidden md:flex" />
