@@ -1,14 +1,16 @@
 <script setup lang="ts">
-definePageMeta({ name: '_contact-me' })
+import { EMAIL, EMAIL_URL, GITHUB_URL, LINKEDIN_URL, PHONE, PHONE_URL } from '~/constants'
+
+definePageMeta({ name: '_contáctame' })
 
 const CONTACTS = [
-    { name: 'bolivaristadiego@gmail.com', link: 'mailto:bolivaristadiego@gmail.com' },
-    { name: '+591 68002172', link: 'tel:+59168002172' },
+    { name: EMAIL, link: EMAIL_URL },
+    { name: PHONE, link: PHONE_URL },
 ]
 
 const SOCIALS = [
-    { name: 'LinkedIn Profile', link: 'https://www.linkedin.com/in/diego-saravia-mamani' },
-    { name: 'GitHub Profile', link: 'https://github.com/diegosaraviamamani' },
+    { name: 'Perfil LinkedIn', link: GITHUB_URL },
+    { name: 'Perfil GitHub', link: LINKEDIN_URL },
 ]
 </script>
 <template>
@@ -18,7 +20,7 @@ const SOCIALS = [
         </h2>
         <div class="md:w-80 shrink-0 md:border-r">
 
-            <accordeon title="contacts" default-open>
+            <accordeon title="contacto" default-open>
                 <ul class="px-7 my-4 text-[#607B96]">
                     <li class="flex flex-col" v-for="{ link, name } in CONTACTS" :key="name">
                         <nuxt-link class="py-1 hover:text-white" :href="link">
@@ -27,7 +29,8 @@ const SOCIALS = [
                     </li>
                 </ul>
             </accordeon>
-            <accordeon title="find-me-also-in" default-open>
+            <!-- <accordeon title="find-me-also-in" default-open> -->
+            <accordeon title="también-encuentrame-en" default-open>
                 <ul class="px-7 mt-4 text-[#607B96]">
                     <li class="flex flex-col" v-for="{ link, name } in SOCIALS" :key="name">
                         <nuxt-link class="py-1 hover:text-white" :href="link" target="_blank">
@@ -43,7 +46,7 @@ const SOCIALS = [
                     {{ $route.name }}
                 </span>
             </div>
-            <div class="md:max-h-[calc(100vh-11.5rem)] md:overflow-y-auto">
+            <div class="md:max-h-[calc(100vh-11.5rem)] md:overflow-y-auto md:h-full md:flex md:flex-col">
                 <contact-form />
             </div>
         </section>

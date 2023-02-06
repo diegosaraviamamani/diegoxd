@@ -46,7 +46,8 @@ select:focus {
   @apply ring-[#607B96] ring-offset-2 ring-offset-[#011221] ring-opacity-50;
 }
 
-button.btn {
-  @apply text-[#FFFFFF] p-2 w-fit rounded-lg text-sm font-[400] bg-[#1C2B3A] hover:bg-[#607B96] transition-all;
+button.btn,
+a.btn {
+  @apply text-[#FFFFFF] p-2 w-fit rounded-lg text-sm font-[400] bg-[#1C2B3A] hover:bg-[#607B96] transition-all cursor-pointer select-none;
 }
 </style>

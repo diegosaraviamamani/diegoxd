@@ -22,8 +22,8 @@ provide('isMenuOpen', isMenuOpen)
                 <nuxt-link href="/" class="text-[#607B96] text-base p-4 md:w-80 md:border-r shrink-0">
                     diego-saravia
                 </nuxt-link>
-                <button class="text-[#607B96] p-4 md:hidden" @click="isMenuOpen = !isMenuOpen">
-                    {{ isMenuOpen? 'x': '☰' }}
+                <button class="text-[#607B96] p-4 md:hidden text-3xl leading-6" @click="isMenuOpen = !isMenuOpen">
+                    {{ isMenuOpen? '✖': '≡' }}
                 </button>
                 <nav-bar class="hidden md:flex" />
             </header>

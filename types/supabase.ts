@@ -13,6 +13,7 @@ export interface Database {
         Row: {
           created_at: string | null
           email: string
+          env: string | null
           id: number
           message: string
           name: string
@@ -20,6 +21,7 @@ export interface Database {
         Insert: {
           created_at?: string | null
           email: string
+          env?: string | null
           id?: number
           message: string
           name: string
@@ -27,6 +29,7 @@ export interface Database {
         Update: {
           created_at?: string | null
           email?: string
+          env?: string | null
           id?: number
           message?: string
           name?: string
@@ -35,22 +38,31 @@ export interface Database {
       projects: {
         Row: {
           created_at: string | null
+          group: string | null
           id: number
+          imageKey: string
           link: string
+          repo: string | null
           tags: string
           title: string
         }
         Insert: {
           created_at?: string | null
+          group?: string | null
           id?: number
+          imageKey: string
           link: string
+          repo?: string | null
           tags: string
           title: string
         }
         Update: {
           created_at?: string | null
+          group?: string | null
           id?: number
+          imageKey?: string
           link?: string
+          repo?: string | null
           tags?: string
           title?: string
         }
