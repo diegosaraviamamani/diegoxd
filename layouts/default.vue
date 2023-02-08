@@ -19,7 +19,7 @@ provide('isMenuOpen', isMenuOpen)
     <div class="bg-[#323233] text-white min-h-screen w-screen flex flex-col">
         <div class="m-4 bg-[#252526] flex-grow overflow-hidden rounded-lg flex flex-col relative">
             <header class="border-b md:border-b-0 flex justify-between items-center">
-                <nuxt-link href="/" class="text-[#BBBBBB] text-base p-4 md:w-80 md:py-2 shrink-0">
+                <nuxt-link href="/" class="text-[#BBBBBB] text-base p-4 md:w-80 md:px-8 md:py-2 shrink-0 md:uppercase">
                     diego-saravia
                 </nuxt-link>
                 <button class="text-[#607B96] p-4 md:hidden text-3xl leading-6" @click="isMenuOpen = !isMenuOpen">
