@@ -9,7 +9,7 @@
 
 * {
   font-family: 'Fira Code', monospace;
-  @apply border-[#1E2D3D];
+  @apply border-[#474747];
   outline: none;
   box-sizing: border-box;
 }
@@ -48,6 +48,6 @@ select:focus {
 
 button.btn,
 a.btn {
-  @apply text-[#FFFFFF] p-2 w-fit rounded-lg text-sm font-[400] bg-[#1C2B3A] hover:bg-[#607B96] transition-all cursor-pointer select-none;
+  @apply text-[#FFFFFF] p-2 w-fit rounded-lg text-sm font-[400] bg-[#10639C] hover:bg-[#1077BB] transition-all cursor-pointer select-none;
 }
 </style>

@@ -18,10 +18,10 @@ const SOCIALS = [
         <h2 v-if="$route.path !== '/'" class="text-white text-sm py-6 px-7 md:hidden">
             {{ $route.name }}
         </h2>
-        <div class="md:w-80 shrink-0 md:border-r">
+        <div class="md:w-80 shrink-0">
 
             <accordeon title="contacto" default-open>
-                <ul class="px-7 my-4 text-[#607B96]">
+                <ul class="px-7 my-4 md:mt-0">
                     <li class="flex flex-col" v-for="{ link, name } in CONTACTS" :key="name">
                         <nuxt-link class="py-1 hover:text-white" :href="link">
                             {{ name }}
@@ -29,9 +29,8 @@ const SOCIALS = [
                     </li>
                 </ul>
             </accordeon>
-            <!-- <accordeon title="find-me-also-in" default-open> -->
             <accordeon title="también-encuentrame-en" default-open>
-                <ul class="px-7 mt-4 text-[#607B96]">
+                <ul class="px-7 my-4 md:mt-0">
                     <li class="flex flex-col" v-for="{ link, name } in SOCIALS" :key="name">
                         <nuxt-link class="py-1 hover:text-white" :href="link" target="_blank">
                             {{ name }}
@@ -40,12 +39,7 @@ const SOCIALS = [
                 </ul>
             </accordeon>
         </div>
-        <section class="flex flex-col gap-5 md:gap-0 md:grow">
-            <div class="hidden md:flex border-b">
-                <span class="border-r px-4 py-2 w-40 text-[#607B96]">
-                    {{ $route.name }}
-                </span>
-            </div>
+        <section class="flex flex-col gap-5 md:gap-0 md:grow bg-[#1E1E1E]">
             <div class="md:max-h-[calc(100vh-11.5rem)] md:overflow-y-auto md:h-full md:flex md:flex-col">
                 <contact-form />
             </div>

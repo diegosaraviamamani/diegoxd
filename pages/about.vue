@@ -1,97 +1,132 @@
 <script setup lang="ts">
+import { } from 'vue'
 definePageMeta({ name: '_acerca-de' })
 const route = useRoute()
 const router = useRouter()
 const textRef = ref(null)
+// define a custom directive
 
 const info = {
-    personal: [
-        { name: 'bio', id: 'bio', content: 'I have 5 years of experience in web development lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat officia deserunt mollit anim id est laborum.' },
-        { name: 'education', id: 'education', content: 'I have 5 years of experience in web development lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat officia deserunt mollit anim id est laborum.' },
-        { name: 'experience', id: 'experience', content: 'I have 5 years of experience in web development lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat officia deserunt mollit anim id est laborum.' },
-    ],
-    profesional: [
-        { name: 'skills', id: 'skills', content: 'I have 5 years of experience in web development lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat officia deserunt mollit anim id est laborum.' },
-        { name: 'interests', id: 'interests', content: 'I have 5 years of experience in web development lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat officia deserunt mollit anim id est laborum.' },
-    ]
+  personal: [
+    {
+      name: 'bio',
+      id: 'bio',
+      data: [
+        { period: "2022 - 2023", title: "Lic. en Ingenieria de Sistemas", school: "UNIVERSIDAD ADVENTISTA DE BOLIVIA", },
+        { period: "2017 - 2019", title: "Tec. Sup. en Sistemas Informáticos", school: "INSTITUTO TECNICO DE EDUCACION COMERCIAL AMERICANO", },
+        { period: "2013 -2016", title: "Tec. Sup. en Petróleo y Gas Natural", school: "UNIVERSIDAD INDIGENA DE BOLIVIA", },
+      ],
+    },
+    {
+      name: 'educación',
+      id: 'education',
+      data: [
+        { period: "2022 - 2023", title: "Lic. en Ingenieria de Sistemas", school: "UNIVERSIDAD ADVENTISTA DE BOLIVIA", },
+        { period: "2017 - 2019", title: "Tec. Sup. en Sistemas Informáticos", school: "INSTITUTO TECNICO DE EDUCACION COMERCIAL AMERICANO", },
+        { period: "2013 -2016", title: "Tec. Sup. en Petróleo y Gas Natural", school: "UNIVERSIDAD INDIGENA DE BOLIVIA", },
+      ],
+    },
+  ],
+  profesional: [
+    {
+      name: 'trabajo',
+      id: 'work',
+      data: [
+        { period: "2022 - 2023", title: "Lic. en Ingenieria de Sistemas", school: "UNIVERSIDAD ADVENTISTA DE BOLIVIA", },
+        { period: "2017 - 2019", title: "Tec. Sup. en Sistemas Informáticos", school: "INSTITUTO TECNICO DE EDUCACION COMERCIAL AMERICANO", },
+        { period: "2013 -2016", title: "Tec. Sup. en Petróleo y Gas Natural", school: "UNIVERSIDAD INDIGENA DE BOLIVIA", },
+      ],
+    },
+  ],
+
 }
+
 type InfoKeys = keyof typeof info
 
 const isActive = (section: string, option: string) => {
-    return route.query.section === section && route.query.option === option
+  return route.query.section === section && route.query.option === option
+}
+function scrollTo(id: string) {
+  // let element = document.querySelector(id);
+  // let top = element.offsetTop;
+  // window.scroll({ top, behavior: 'smooth' });
+
+  const element = document.querySelector(id)
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
 }
 
-const content = computed(() => {
-    const { section, option } = route.query as { section: InfoKeys, option: string }
-    return info[section]?.find(({ id }) => id === option)?.content
-})
 
-watchEffect(() => {
-    const { query: { section, option } } = route
-    if (!section && !option) {
-        router.replace({ query: { section: section || 'personal', option: option || 'bio' } })
-    }
-})
-watchEffect(() => {
-    // get height of text ref element
-    // @ts-ignore
-    console.log(textRef.value?.clientHeight)
-})
 
 </script>
 <template>
 
-    <div class="flex flex-col md:flex-row">
-        <h2 v-if="$route.path !== '/'" class="text-white text-sm py-6 px-7 md:hidden">
-            {{ $route.name }}
-        </h2>
-        <div class="md:w-80 shrink-0 md:border-r">
-            <accordeon v-for="(section, key, index) in info" :key="index" :title="key" default-open>
-                <ul class="px-7 my-4 text-[#607B96]">
-                    <li class="flex flex-col" v-for="{ id, name } in section" :key="id">
-                        <nuxt-link :href="{ query: { section: key, option: id } }"
-                            :class="{ 'text-white': isActive(key, id) }" class="py-1 hover:text-white">
-                            {{ name }}
-                        </nuxt-link>
-                    </li>
-                </ul>
-            </accordeon>
-        </div>
-        <div class="flex flex-col gap-6 md:gap-0 md:grow">
-            <h3 class="px-7 pt-6 md:hidden">
-                // {{ $route.query.section }}
-                <span class="text-[#607B96]">
-                    / {{ $route.query.option }}
-                </span>
-            </h3>
-            <div class="hidden md:flex border-b">
-                <span class="border-r px-4 py-2 w-40 text-[#607B96]">
-                    {{ $route.query.section }}
-                </span>
-            </div>
-            <div class="md:flex md:items-start">
-                <div :style="{
-                    maxHeight: `calc(${//@ts-ignore
-                        textRef?.clientHeight}px - 5rem)`
-                }" class="hidden md:flex my-10 ml-10 overflow-y-hidden shrink-0 max-h-0 text-[#607B96]">
-                    <ol>
-                        <li v-for="i in 100" class="flex">
-                            <span class="text-right w-4">{{ i }}</span>
-                            <span class="w-10"></span>
-                            <span class="w-5">* </span>
-
-                        </li>
-                    </ol>
-                </div>
-                <div class="px-7 pb-6 md:pl-0 md:py-10 text-[#607B96] md:flex md:flex-col" ref="textRef">
-                    <h2 class="hidden md:block">
-                        {{ `${$route.query.option}`.toUpperCase() }}
-                    </h2>
-                    <p>
-                        {{ content }}
-                    </p>
-                </div>
-            </div>
-        </div>
+  <div class="flex flex-col md:flex-row grow">
+    <h2 v-if="$route.path !== '/'" class="text-white text-sm py-6 px-7 md:hidden">
+      {{ $route.name }}
+    </h2>
+    <div class="md:w-80 shrink-0">
+      <accordeon v-for="(section, key, index) in info" :key="index" :title="key" default-open>
+        <ul class="px-7 my-4 md:mt-0">
+          <li class="flex flex-col" v-for="{ id, name } in section" :key="id">
+            <a @click.prevent="scrollTo(`#${[key, id].join('-')}`)" class="py-1 hover:text-white transition-all"
+              :class="isActive(key, id) ? 'text-white' : 'text-[#CCCCCC]'">
+              <!-- svg markdown icon file -->
+              <svg class="w-4 h-4 inline-block mr-2" width="17" height="16" viewBox="0 0 17 16" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M1.44684 0.844727H16.0466C16.2617 0.844727 16.468 0.930181 16.6201 1.08229C16.7722 1.2344 16.8577 1.44071 16.8577 1.65582V14.6334C16.8577 14.8485 16.7722 15.0548 16.6201 15.2069C16.468 15.359 16.2617 15.4445 16.0466 15.4445H1.44684C1.23172 15.4445 1.02542 15.359 0.873307 15.2069C0.721197 15.0548 0.635742 14.8485 0.635742 14.6334V1.65582C0.635742 1.44071 0.721197 1.2344 0.873307 1.08229C1.02542 0.930181 1.23172 0.844727 1.44684 0.844727ZM4.69122 10.9834V7.73904L6.31342 9.36124L7.93561 7.73904V10.9834H9.5578V5.30576H7.93561L6.31342 6.92795L4.69122 5.30576H3.06903V10.9834H4.69122ZM13.6133 8.55014V5.30576H11.9911V8.55014H10.3689L12.8022 10.9834L15.2355 8.55014H13.6133Z"
+                  fill="currentColor" />
+              </svg>
+              {{ name }}
+            </a>
+          </li>
+        </ul>
+      </accordeon>
     </div>
+    <section
+      class="flex flex-col flex-grow gap-6 md:gap-0 md:grow bg-[#1E1E1E] md:max-h-[calc(100vh-7.5rem)] overflow-y-auto relative">
+      <h3 class="px-7 pt-6 md:hidden">
+        // {{ $route.query.section }}
+        <span class="text-[#607B96]">
+          / {{ $route.query.option }}
+        </span>
+      </h3>
+      <div class="md:flex md:items-start" v-if="$route.path === '/about'">
+        <div class="hidden md:flex my-10 ml-10 md:my-5 overflow-y-hidden shrink-0 text-[#607B96]">
+          <ol>
+            <li v-for="i in 50" class="flex text-[#858585]">
+              <span class="text-right w-4">{{ i }}</span>
+              <span class="w-10"></span>
+            </li>
+          </ol>
+        </div>
+        <div>
+          <div v-for="(sectionArray, key, id) in info" :key="id" class="px-7 pb-6 md:pl-0">
+            <div v-for="{ id, name, data } in sectionArray" class="flex flex-col" :id="[key, id].join('-')">
+              <br />
+              <highlight-code class="text-[#43D9AD]" language="typescript" :code="`const ${name} = [`" />
+              <template v-for="d in data">
+                <highlight-code class="ml-4" language="typescript" code="{" />
+                <highlight-code v-for="(value, key) in d" class="ml-8" language="typescript"
+                  :code="`${key}: '${value}'`" />
+                <highlight-code class="ml-4" language="typescript" code="}," />
+              </template>
+              <highlight-code :code="`]`" language="typescript" />
+              <br>
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
 </template>
+<style>
+.bulleted-text {
+  list-style-type: disc;
+  list-style-position: inside;
+}
+</style>

@@ -17,10 +17,10 @@ const getImageUrl = (imageKey?: string) => imageKey ? client.storage.from('portf
             Project 1 <span class="text-[#607B96]">// {{ project.title }}</span>
         </h3>
         <article
-            class="overflow-hidden rounded-2xl border bg-[#011221]  hover:border-white hover:opacity-90 transition-all h-full">
+            class="overflow-hidden rounded-2xl bg-[#262728] border border-transparent hover:border-white hover:opacity-90 transition-all h-full">
             <img :src="getImageUrl(project.imageKey)" alt="Project 1" class="w-full aspect-[291/146]" />
             <div class="p-8 flex flex-col gap-5">
-                <p class="text-[#607B96]">
+                <p class="text-[#BBBBBB]">
                     Duis aute irure dolor in velit esse cillum incididunt ut labore.
                 </p>
                 <nuxt-link v-if="project.link" :href="project.link" class="btn" target="_blank">

@@ -25,27 +25,27 @@ const onSubmit = async (e: Event) => {
     <!-- form for contact -->
     <form class="flex flex-col gap-5 p-7" @submit.prevent="onSubmit" v-if="!isSent">
         <div class="flex flex-col gap-2">
-            <label for="name" class="text-[#607B96]">_nombre:</label>
+            <label for="name" class="text-[#BBBBBB]">_nombre:</label>
             <input type="text" id="name" v-model="formData.name" required :disabled="isSending"
-                class="border bg-[#011221] text-[#E5E9F0] placeholder:text-[#465E77] py-3 px-4 rounded-lg focus:border-[#607B96]">
+                class="border bg-[#3C3C3C] text-[#CCCCCC] placeholder:text-[#465E77] py-3 px-4 rounded focus:border-[#007FD4]">
         </div>
         <div class="flex flex-col gap-2">
-            <label for="email" class="text-[#607B96]">_correo-electrónico:</label>
+            <label for="email" class="text-[#BBBBBB]">_correo-electrónico:</label>
             <input type="email" id="email" v-model="formData.email" required :disabled="isSending"
-                class="border bg-[#011221] text-[#E5E9F0] placeholder:text-[#465E77] py-3 px-4 rounded-lg focus:border-[#607B96]">
+                class="border bg-[#3C3C3C] text-[#CCCCCC] placeholder:text-[#465E77] py-3 px-4 rounded focus:border-[#007FD4]">
         </div>
         <div class="flex flex-col gap-2">
-            <label for="message" class="text-[#607B96]">_mensaje:</label>
+            <label for="message" class="text-[#BBBBBB]">_mensaje:</label>
             <textarea id="message" v-model="formData.message" required :disabled="isSending" style="resize: none;"
-                class="border bg-[#011221] text-[#E5E9F0] placeholder:text-[#465E77] placeholder:leading-5 py-3 px-4 rounded-lg h-36 focus:border-[#607B96]"></textarea>
+                class="border bg-[#3C3C3C] text-[#CCCCCC] placeholder:text-[#465E77] placeholder:leading-5 py-3 px-4 rounded h-36 focus:border-[#007FD4]"></textarea>
         </div>
         <button type="submit" :disabled="isSending" class="btn">
             {{ isSending? 'enviando...': 'enviar-mensaje' }}
         </button>
     </form>
     <div v-else class="flex flex-col gap-5 p-7 text-center items-center">
-        <h2 class="text-[#E5E9F0] text-2xl">¡Gracias! 🤘</h2>
-        <p class="text-[#607B96] text-lg leading-6">
+        <h2 class="text-[#CCCCCC] text-2xl">¡Gracias! 🤘</h2>
+        <p class="text-[#BBBBBB] text-lg leading-6">
             ¡Tu mensaje ha sido enviado! Recibirás una respuesta muy pronto.
         </p>
         <button @click="isSent = !isSent" class="btn">

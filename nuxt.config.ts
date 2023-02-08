@@ -9,7 +9,7 @@ export default defineNuxtConfig({
     layoutTransition: { name: "layout", mode: "out-in" },
     pageTransition: { name: "page", mode: "out-in" },
   },
-  plugins: ["~/plugins/prism.js"],
+  plugins: ["~/plugins/prism.js", "~/plugins/directive.ts"],
   css: ["~/assets/css/prism.css"],
   runtimeConfig: {
     public: {
