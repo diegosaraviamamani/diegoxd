@@ -7,16 +7,19 @@ const textRef = ref(null)
 // define a custom directive
 
 const info = {
-  personal: [
+  profesional: [
     {
-      name: 'bio',
-      id: 'bio',
+      name: 'experiencia',
+      id: 'work',
       data: [
-        { period: "2022 - 2023", title: "Lic. en Ingenieria de Sistemas", school: "UNIVERSIDAD ADVENTISTA DE BOLIVIA", },
-        { period: "2017 - 2019", title: "Tec. Sup. en Sistemas Informáticos", school: "INSTITUTO TECNICO DE EDUCACION COMERCIAL AMERICANO", },
-        { period: "2013 -2016", title: "Tec. Sup. en Petróleo y Gas Natural", school: "UNIVERSIDAD INDIGENA DE BOLIVIA", },
+        { position: "SOFTWARE ENGINEER", company: "ComunidadFeliz, Chile", period: "12/2020 - Presente", stack: "Nextjs, Redux, Graphql, Emotion, Storybook" },
+        { position: "FRONTEND DEVELOPER", company: "Nanolancer, México", period: "03/2022 - Presente", stack: "React, Ionic, Tailwindm Graphql" },
+        { position: "FRONTEND DEVELOPER", company: "Soy Digital", period: "12/2021 - 02/2022", stack: "React, Redux, Vue, Vuetify, Vuex" },
+        { position: "WEB DEVELOPER JR", company: "Globaldev Solutions", period: "08/2020 - 10/2020", stack: "Laravel, Express, Firebase, Vuejs, Vuetify, React" },
       ],
     },
+  ],
+  personal: [
     {
       name: 'educación',
       id: 'education',
@@ -26,18 +29,21 @@ const info = {
         { period: "2013 -2016", title: "Tec. Sup. en Petróleo y Gas Natural", school: "UNIVERSIDAD INDIGENA DE BOLIVIA", },
       ],
     },
-  ],
-  profesional: [
     {
-      name: 'trabajo',
-      id: 'work',
+      name: 'idiomas',
+      id: 'languages',
       data: [
-        { period: "2022 - 2023", title: "Lic. en Ingenieria de Sistemas", school: "UNIVERSIDAD ADVENTISTA DE BOLIVIA", },
-        { period: "2017 - 2019", title: "Tec. Sup. en Sistemas Informáticos", school: "INSTITUTO TECNICO DE EDUCACION COMERCIAL AMERICANO", },
-        { period: "2013 -2016", title: "Tec. Sup. en Petróleo y Gas Natural", school: "UNIVERSIDAD INDIGENA DE BOLIVIA", },
-      ],
+        { name: 'Español', level: 'Nativo' },
+        { name: 'Ingles', level: 'Intermedio - A2' },
+      ]
+    },
+    {
+      name: 'habilidades',
+      id: 'skills',
+      data: ["Trabajo en equipo", "Capacidad de aprendizaje"]
     },
   ],
+
 
 }
 
@@ -94,9 +100,9 @@ function scrollTo(id: string) {
         </span>
       </h3>
       <div class="md:flex md:items-start" v-if="$route.path === '/about'">
-        <div class="hidden md:flex my-10 ml-10 md:my-5 overflow-y-hidden shrink-0 text-[#607B96]">
+        <div class="hidden md:flex my-10 ml-10 md:my-5 overflow-y-hidden shrink-0 text-[#607B96] ">
           <ol>
-            <li v-for="i in 50" class="flex text-[#858585]">
+            <li v-for="i in 60" class="flex text-[#858585]">
               <span class="text-right w-4">{{ i }}</span>
               <span class="w-10"></span>
             </li>
@@ -107,14 +113,19 @@ function scrollTo(id: string) {
             <div v-for="{ id, name, data } in sectionArray" class="flex flex-col" :id="[key, id].join('-')">
               <br />
               <highlight-code class="text-[#43D9AD]" language="typescript" :code="`const ${name} = [`" />
+
               <template v-for="d in data">
-                <highlight-code class="ml-4" language="typescript" code="{" />
-                <highlight-code v-for="(value, key) in d" class="ml-8" language="typescript"
-                  :code="`${key}: '${value}'`" />
-                <highlight-code class="ml-4" language="typescript" code="}," />
+                <template v-if="typeof d === 'string'">
+                  <highlight-code class="ml-4" language="typescript" :code="`'${d}'`" />
+                </template>
+                <template v-else>
+                  <highlight-code class="ml-4" language="typescript" code="{" />
+                  <highlight-code v-for="(value, key) in d" class="ml-8" language="typescript"
+                    :code="`${key}: '${value}'`" />
+                  <highlight-code class="ml-4" language="typescript" code="}," />
+                </template>
               </template>
               <highlight-code :code="`]`" language="typescript" />
-              <br>
               <br>
             </div>
           </div>
