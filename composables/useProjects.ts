@@ -1,5 +1,6 @@
 function useProjects() {
   const selectedTags = ref<string[]>([]);
+
   const { pending, data: projects } = useLazyFetch("/api/projects");
 
   const tags = computed(() => {

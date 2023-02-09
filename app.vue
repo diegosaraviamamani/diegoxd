@@ -12,7 +12,33 @@
   @apply border-[#474747];
   outline: none;
   box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: red blue;
 }
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  border-left: 1px solid #474747;
+  width: 15px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #1E1E1E;
+  border-left: 1px solid #474747;
+  
+  border-radius: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+  transition: all 1s;
+  border-left: 1px solid #474747;
+  background-color: #1E1E1E;
+}
+*:hover::-webkit-scrollbar-thumb {
+  transition: all 1s;
+  background-color: #424242;
+}
+
 
 body {
   @apply bg-[#010C15];
