@@ -1,20 +1,17 @@
 import { serverSupabaseClient } from "#supabase/server";
 import { Database } from "~/types/supabase";
+import { Contact } from "~~/types/app";
 
-// type Contact = Database["public"]["Tables"]["contact"]["Row"];
-// only declare type with required fields
-type Contact = Pick<
-  Database["public"]["Tables"]["contact"]["Row"],
-  "name" | "email" | "message"
->;
 export default defineEventHandler(async (event) => {
   try {
     const body = await readBody<Contact>(event);
     const client = serverSupabaseClient<Database>(event);
-    await client.from("contact").insert(body);
-    return { statusCode: 200, statusMessage: "OK" };
+    const { status } = await client.from("contact").insert(body);
+    if (status !== 201) {
+      throw new Error("Error al enviar el formulario");
+    }
+    return { status: 201 };
   } catch (error) {
-    console.error(error);
     throw error;
   }
 });

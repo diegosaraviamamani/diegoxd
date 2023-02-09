@@ -6,8 +6,8 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss",
   ],
   app: {
-    layoutTransition: { name: "layout", mode: "out-in" },
-    pageTransition: { name: "page", mode: "out-in" },
+    layoutTransition: { name: "layout" },
+    pageTransition: { name: "page" },
   },
   plugins: ["~/plugins/prism.js", "~/plugins/directive.ts"],
   css: ["~/assets/css/prism.css"],

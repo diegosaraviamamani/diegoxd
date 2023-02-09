@@ -1,48 +1,31 @@
 <script setup lang="ts">
-const runtimeConfig = useRuntimeConfig()
-const isSending = ref(false)
-const isSent = ref(false)
-const formData = reactive({ name: '', email: '', message: '' })
-const onSubmit = async (e: Event) => {
-    isSending.value = true
-    e.preventDefault()
-    try {
-        const body = { ...formData, env: runtimeConfig.public.env }
-        await $fetch('/api/contact', { method: 'POST', body: JSON.stringify(body) })
-        formData.name = ''
-        formData.email = ''
-        formData.message = ''
-        isSent.value = true
-    } catch (error) {
-        alert('Something went wrong! Please try again later.')
-    } finally {
-        isSending.value = false
-    }
-}
+
+const { formData, isLoading, isSent, onSubmit } = useContactForm()
 
 </script>
 <template>
     <!-- form for contact -->
-    <form class="flex flex-col gap-5 p-7" @submit.prevent="onSubmit" v-if="!isSent">
+    <form class="flex flex-col gap-5 p-7 max-w-[600px] w-full mx-auto" @submit.prevent="onSubmit" v-if="!isSent">
         <div class="flex flex-col gap-2">
             <label for="name" class="text-[#BBBBBB]">_nombre:</label>
-            <input type="text" id="name" v-model="formData.name" required :disabled="isSending"
+            <input type="text" id="name" v-model="formData.name" required :disabled="isLoading"
                 class="border bg-[#3C3C3C] text-[#CCCCCC] placeholder:text-[#465E77] py-3 px-4 rounded focus:border-[#007FD4]">
         </div>
         <div class="flex flex-col gap-2">
             <label for="email" class="text-[#BBBBBB]">_correo-electrónico:</label>
-            <input type="email" id="email" v-model="formData.email" required :disabled="isSending"
+            <input type="email" id="email" v-model="formData.email" required :disabled="isLoading"
                 class="border bg-[#3C3C3C] text-[#CCCCCC] placeholder:text-[#465E77] py-3 px-4 rounded focus:border-[#007FD4]">
         </div>
         <div class="flex flex-col gap-2">
             <label for="message" class="text-[#BBBBBB]">_mensaje:</label>
-            <textarea id="message" v-model="formData.message" required :disabled="isSending" style="resize: none;"
+            <textarea id="message" v-model="formData.message" required :disabled="isLoading" style="resize: none;"
                 class="border bg-[#3C3C3C] text-[#CCCCCC] placeholder:text-[#465E77] placeholder:leading-5 py-3 px-4 rounded h-36 focus:border-[#007FD4]"></textarea>
         </div>
-        <button type="submit" :disabled="isSending" class="btn">
-            {{ isSending? 'enviando...': 'enviar-mensaje' }}
+        <button type="submit" :disabled="isLoading" class="btn">
+            {{ isLoading? 'enviando...': 'enviar-mensaje' }}
         </button>
     </form>
+    <!-- message sent -->
     <div v-else class="flex flex-col gap-5 p-7 text-center items-center">
         <h2 class="text-[#CCCCCC] text-2xl">¡Gracias! 🤘</h2>
         <p class="text-[#BBBBBB] text-lg leading-6">

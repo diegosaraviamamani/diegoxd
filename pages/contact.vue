@@ -12,6 +12,7 @@ const SOCIALS = [
     { name: 'Perfil LinkedIn', link: GITHUB_URL },
     { name: 'Perfil GitHub', link: LINKEDIN_URL },
 ]
+
 </script>
 <template>
     <div class="flex flex-col md:flex-row md:grow">
@@ -19,7 +20,6 @@ const SOCIALS = [
             {{ $route.name }}
         </h2>
         <div class="md:w-80 shrink-0">
-
             <accordeon title="contacto" default-open>
                 <ul class="px-7 my-4 md:mt-0">
                     <li class="flex flex-col" v-for="{ link, name } in CONTACTS" :key="name">
