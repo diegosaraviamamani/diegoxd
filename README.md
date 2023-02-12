@@ -1,42 +1,19 @@
-# Nuxt 3 Minimal Starter
+# Portafolio
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Este es mi portafolio personal desarrollado con [Nuxt.js v3](https://nuxtjs.org/), [Vue.js v3](https://vuejs.org/), [TypeScript](https://www.typescriptlang.org/), [Supabase](https://supabase.io/) y [Tailwind](https://tailwindcss.com/).
 
-## Setup
+## Página de Inicio
 
-Make sure to install the dependencies:
+En la página de inicio encontrarás mi nombre y mi especialidad como desarrollador frontal, así como un enlace a mi perfil en Github.
 
-```bash
-# yarn
-yarn install
+## Acerca de
 
-# npm
-npm install
+En la página de "Acerca de" detallo mi experiencia laboral, mis estudios, mis conocimientos de idiomas y mis habilidades técnicas.
 
-# pnpm
-pnpm install
-```
+## Proyectos
 
-## Development Server
+En la página de "Proyectos", puedes encontrar una lista de proyectos en los que he trabajado. Cada proyecto está presentado en una tarjeta con información detallada. También se pueden filtrar por categorías y etiquetas.
 
-Start the development server on http://localhost:3000
+## Contacto
 
-```bash
-npm run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-npm run build
-```
-
-Locally preview production build:
-
-```bash
-npm run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+En la página de "Contacto", puedes encontrar un formulario para enviarme un mensaje. Estoy ansioso por escuchar de ti.
