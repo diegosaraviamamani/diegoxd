@@ -1,6 +1,7 @@
 <script setup lang="ts">
 useHead(
     () => ({
+        htmlAttrs: { lang: 'es' },
         meta: [
             { name: 'description', content: 'Diego Saravia personal website' },
             { name: 'keywords', content: 'diego, saravia, personal, website' },

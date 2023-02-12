@@ -20,7 +20,7 @@ const getRoutes = () => ([
             class="p-4 md:py-2 md:px-8  text-base font-normal md:border-r md:border-[#252526] md:hover: transition-all whitespace-nowrap text-ellipsis overflow-hidden">
             {{ name }}
         </nuxt-link>
-        <div class="md:grow"></div>
+        <div class="md:grow" />
         <nuxt-link :to="REPO_URL" active-class="md:text-white md:bg-[#1E1E1E]" target="_blank"
             class="hidden md:flex items-center px-4 bg-[#252526]" title="Ver código fuente">
             <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">

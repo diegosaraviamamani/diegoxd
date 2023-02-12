@@ -14,9 +14,6 @@ function scrollTo(id: string) {
     element.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 }
-
-
-
 </script>
 <template>
 
@@ -28,7 +25,8 @@ function scrollTo(id: string) {
       <accordeon v-for="(section) in ABOUT_DATA" :key="section.id" :title="section.label" default-open>
         <ul class="px-7 my-4 md:mt-0">
           <li class="flex flex-col" v-for="{ id, name } in section.data" :key="section.id">
-            <a @click.prevent="scrollTo(`#${[name, id].join('-')}`)" class="py-1 hover:text-white transition-all"
+            <a @click.prevent="scrollTo(`#${[section.label, id].join('-')}`)"
+              :href="`#${[section.label, id].join('-')}`" class="py-1 hover:text-white transition-all"
               :class="isActive(name, id) ? 'text-white' : 'text-[#CCCCCC]'">
               <!-- svg markdown icon file -->
               <svg class="w-4 h-4 inline-block mr-2" width="17" height="16" viewBox="0 0 17 16" fill="none"
@@ -50,19 +48,19 @@ function scrollTo(id: string) {
           <ol class="hidden md:block lg:hidden">
             <li v-for="i in 88" class="flex text-[#858585]">
               <span class="text-right w-4">{{ i }}</span>
-              <span class="w-10"></span>
+              <span class="w-10" />
             </li>
           </ol>
           <ol class="hidden lg:block">
             <li v-for="i in 68" class="flex text-[#858585]">
               <span class="text-right w-4">{{ i }}</span>
-              <span class="w-10"></span>
+              <span class="w-10" />
             </li>
           </ol>
         </div>
         <div>
           <div v-for="(section) in ABOUT_DATA" :key="section.id" class="px-7 pb-6 md:pl-0">
-            <div v-for="{ id, name, data } in section.data" class="flex flex-col" :id="[name, id].join('-')">
+            <div v-for="{ id, name, data } in section.data" class="flex flex-col" :id="[section.label, id].join('-')">
               <br />
               <highlight-code class="text-[#43D9AD]" language="typescript" :code="`const ${name} = [`" />
 

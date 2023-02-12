@@ -12,9 +12,9 @@ const code = ref(`const githubLink = 'https:// github.com/example/url'`)
             <p class="text-[#43D9AD] md:text-3xl">> Front-end developer</p>
         </div>
         <div class="flex-[2] md:flex-[22] flex flex-col gap-4 text-base">
-            <HighlightCode code="// encuentra mi perfil en Github:" language="typescript"></HighlightCode>
+            <HighlightCode code="// encuentra mi perfil en Github:" language="typescript" />
             <nuxt-link to="https://github.com/diegosaraviamamani" target="_blank" class="text-[#43D9AD]">
-                <HighlightCode :code="code" language="typescript"></HighlightCode>
+                <HighlightCode :code="code" language="typescript" />
             </nuxt-link>
         </div>
     </div>

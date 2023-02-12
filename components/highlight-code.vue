@@ -9,7 +9,7 @@ onMounted(() => {
 })
 </script>
 <template>
-    <code v-html="highlightedCode"></code>
+    <code v-html="highlightedCode" />
 </template>
 <style>
 .token.operator,

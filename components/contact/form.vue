@@ -19,7 +19,7 @@ const { formData, isLoading, isSent, onSubmit } = useContactForm()
         <div class="flex flex-col gap-2">
             <label for="message" class="text-[#BBBBBB]">_mensaje:</label>
             <textarea id="message" v-model="formData.message" required :disabled="isLoading" style="resize: none;"
-                class="border bg-[#3C3C3C] text-[#CCCCCC] placeholder:text-[#465E77] placeholder:leading-5 py-3 px-4 rounded h-36 focus:border-[#007FD4]"></textarea>
+                class="border bg-[#3C3C3C] text-[#CCCCCC] placeholder:text-[#465E77] placeholder:leading-5 py-3 px-4 rounded h-36 focus:border-[#007FD4]" />
         </div>
         <button type="submit" :disabled="isLoading" class="btn">
             {{ isLoading? 'enviando...': 'enviar-mensaje' }}

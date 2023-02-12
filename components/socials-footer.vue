@@ -9,7 +9,7 @@ const SOCIAL_LINKS = [
         <!-- <h4 class="px-4 py-3">find me in:</h4> -->
         <h4 class="px-4 py-2">encuéntrame en:</h4>
         <div class="flex">
-            <nuxt-link :href="LINKEDIN_URL" target="_blank"
+            <nuxt-link :href="LINKEDIN_URL" target="_blank" aria-label="linkedin"
                 class="w-14 text-center px-4 py-2 border-l last-of-type:md:border-r">
                 <!-- linkedin icon -->
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -19,7 +19,7 @@ const SOCIAL_LINKS = [
                 </svg>
             </nuxt-link>
         </div>
-        <div class="grow hidden md:block"></div>
+        <div class="grow hidden md:block" />
         <nuxt-link href="#" target="_blank" class="text-center px-4 py-2 border-l hidden md:block">
             @diegosaraviamamani
         </nuxt-link>

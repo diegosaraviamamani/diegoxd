@@ -22,13 +22,9 @@ function getImageUrl(imageKey: string) {
             class="overflow-hidden rounded-2xl bg-[#262728] border border-transparent hover:border-white hover:opacity-90 transition-all h-full">
             <img :src="getImageUrl(project.imageKey)" alt="Project 1" class="w-full aspect-[291/146]" />
             <div class="p-8 flex flex-col gap-5">
-                <div :title="project.title" class="overflow-hidden whitespace-nowrap text-ellipsis text-[#5565E8]">
-                    <h4 class="text-white">
-                        {{ project.title }}
-                    </h4>
-                    <h3>
-                        {{ project.category }}
-                    </h3>
+                <div :title="project.title" class="overflow-hidden whitespace-nowrap text-ellipsis text-white">
+                    <h4>{{ project.title }}</h4>
+                    <h3 class="text-xs uppercase tracking-widest">{{ project.category }}</h3>
                 </div>
                 <p class="text-[#BBBBBB]">
                     Duis aute irure dolor in velit esse cillum incididunt ut labore.
