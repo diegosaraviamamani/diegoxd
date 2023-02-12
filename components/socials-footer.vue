@@ -7,7 +7,7 @@ const SOCIAL_LINKS = [
 <template>
     <footer class="flex justify-between  border-t md:justify-start w-full bg-[#007ACC] text-white">
         <!-- <h4 class="px-4 py-3">find me in:</h4> -->
-        <h4 class="px-4 py-2">encuéntrame en:</h4>
+        <span class="px-4 py-2">encuéntrame en:</span>
         <div class="flex">
             <nuxt-link :href="LINKEDIN_URL" target="_blank" aria-label="linkedin"
                 class="w-14 text-center px-4 py-2 border-l last-of-type:md:border-r">
