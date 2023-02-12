@@ -1,6 +1,6 @@
 # Portafolio
 
-Este es mi portafolio personal desarrollado con [Nuxt.js v3](https://nuxtjs.org/), [Vue.js v3](https://vuejs.org/), [TypeScript](https://www.typescriptlang.org/), [Supabase](https://supabase.io/) y [Tailwind](https://tailwindcss.com/).
+Este es mi portafolio personal desarrollado con [Nuxt.js v3](https://nuxtjs.com/), [Vue.js v3](https://vuejs.org/), [TypeScript](https://www.typescriptlang.org/), [Supabase](https://supabase.io/) y [Tailwind](https://tailwindcss.com/).
 
 ## Página de Inicio
 
