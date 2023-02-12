@@ -37,8 +37,8 @@ export interface Database {
       }
       projects: {
         Row: {
+          category: string
           created_at: string | null
-          group: string | null
           id: number
           imageKey: string
           link: string
@@ -47,8 +47,8 @@ export interface Database {
           title: string
         }
         Insert: {
+          category: string
           created_at?: string | null
-          group?: string | null
           id?: number
           imageKey: string
           link: string
@@ -57,8 +57,8 @@ export interface Database {
           title: string
         }
         Update: {
+          category?: string
           created_at?: string | null
-          group?: string | null
           id?: number
           imageKey?: string
           link?: string
@@ -75,6 +75,9 @@ export interface Database {
       [_ in never]: never
     }
     Enums: {
+      [_ in never]: never
+    }
+    CompositeTypes: {
       [_ in never]: never
     }
   }

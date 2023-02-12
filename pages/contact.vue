@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { EMAIL, EMAIL_URL, GITHUB_URL, LINKEDIN_URL, PHONE, PHONE_URL } from '~/constants'
 
+useHead(() => ({ title: 'Contacto - Diego Saravia' }))
 definePageMeta({ name: '_contáctame' })
 
 const CONTACTS = [

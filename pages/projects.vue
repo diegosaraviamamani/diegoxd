@@ -1,7 +1,15 @@
 <script setup lang="ts">
+useHead(() => ({ title: 'Proyectos - Diego Saravia' }))
 definePageMeta({ name: '_proyectos' })
 
-const { pending, projects, selectedTags, tags } = useProjects()
+const {
+  pending,
+  projects,
+  selectedTags,
+  tags,
+  selectedCategories,
+  categories
+} = useProjects()
 
 </script>
 <template>
@@ -16,6 +24,15 @@ const { pending, projects, selectedTags, tags } = useProjects()
             <input type="checkbox" :id="tag" :value="tag" class="bg-[#011221] rounded-lg w-5 h-5"
               v-model="selectedTags" />
             <label :for="tag" class="w-full leading-5 pl-5">{{ tag }}</label>
+          </li>
+        </ul>
+      </accordeon>
+      <accordeon title="categorias" default-open>
+        <ul class="flex flex-col gap-3 px-7 my-4 md:mt-0">
+          <li v-for="category in categories" class="flex items-center">
+            <input type="checkbox" :id="category" :value="category" class="bg-[#011221] rounded-lg w-5 h-5"
+              v-model="selectedCategories" />
+            <label :for="category" class="w-full leading-5 pl-5">{{ category }}</label>
           </li>
         </ul>
       </accordeon>

@@ -1,62 +1,14 @@
 <script setup lang="ts">
-import { } from 'vue'
+import { ABOUT_DATA } from '../constants';
+useHead(() => ({ title: 'Acerca de - Diego Saravia' }))
 definePageMeta({ name: '_acerca-de' })
+
 const route = useRoute()
-const router = useRouter()
-const textRef = ref(null)
-// define a custom directive
-
-const info = {
-  profesional: [
-    {
-      name: 'experiencia',
-      id: 'work',
-      data: [
-        { position: "SOFTWARE ENGINEER", company: "ComunidadFeliz, Chile", period: "12/2020 - Presente", stack: "Nextjs, Redux, Graphql, Emotion, Storybook" },
-        { position: "FRONTEND DEVELOPER", company: "Nanolancer, México", period: "03/2022 - Presente", stack: "React, Ionic, Tailwindm Graphql" },
-        { position: "FRONTEND DEVELOPER", company: "Soy Digital", period: "12/2021 - 02/2022", stack: "React, Redux, Vue, Vuetify, Vuex" },
-        { position: "WEB DEVELOPER JR", company: "Globaldev Solutions", period: "08/2020 - 10/2020", stack: "Laravel, Express, Firebase, Vuejs, Vuetify, React" },
-      ],
-    },
-  ],
-  personal: [
-    {
-      name: 'educación',
-      id: 'education',
-      data: [
-        { period: "2022 - 2023", title: "Lic. en Ingenieria de Sistemas", school: "UNIVERSIDAD ADVENTISTA DE BOLIVIA", },
-        { period: "2017 - 2019", title: "Tec. Sup. en Sistemas Informáticos", school: "INSTITUTO TECNICO DE EDUCACION COMERCIAL AMERICANO", },
-        { period: "2013 -2016", title: "Tec. Sup. en Petróleo y Gas Natural", school: "UNIVERSIDAD INDIGENA DE BOLIVIA", },
-      ],
-    },
-    {
-      name: 'idiomas',
-      id: 'languages',
-      data: [
-        { name: 'Español', level: 'Nativo' },
-        { name: 'Ingles', level: 'Intermedio - A2' },
-      ]
-    },
-    {
-      name: 'habilidades',
-      id: 'skills',
-      data: ["Trabajo en equipo", "Capacidad de aprendizaje"]
-    },
-  ],
-
-
-}
-
-type InfoKeys = keyof typeof info
 
 const isActive = (section: string, option: string) => {
   return route.query.section === section && route.query.option === option
 }
 function scrollTo(id: string) {
-  // let element = document.querySelector(id);
-  // let top = element.offsetTop;
-  // window.scroll({ top, behavior: 'smooth' });
-
   const element = document.querySelector(id)
   if (element) {
     element.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -73,11 +25,11 @@ function scrollTo(id: string) {
       {{ $route.name }}
     </h2>
     <div class="md:w-80 shrink-0">
-      <accordeon v-for="(section, key, index) in info" :key="index" :title="key" default-open>
+      <accordeon v-for="(section) in ABOUT_DATA" :key="section.id" :title="section.label" default-open>
         <ul class="px-7 my-4 md:mt-0">
-          <li class="flex flex-col" v-for="{ id, name } in section" :key="id">
-            <a @click.prevent="scrollTo(`#${[key, id].join('-')}`)" class="py-1 hover:text-white transition-all"
-              :class="isActive(key, id) ? 'text-white' : 'text-[#CCCCCC]'">
+          <li class="flex flex-col" v-for="{ id, name } in section.data" :key="section.id">
+            <a @click.prevent="scrollTo(`#${[name, id].join('-')}`)" class="py-1 hover:text-white transition-all"
+              :class="isActive(name, id) ? 'text-white' : 'text-[#CCCCCC]'">
               <!-- svg markdown icon file -->
               <svg class="w-4 h-4 inline-block mr-2" width="17" height="16" viewBox="0 0 17 16" fill="none"
                 xmlns="http://www.w3.org/2000/svg">
@@ -93,24 +45,24 @@ function scrollTo(id: string) {
     </div>
     <section
       class="flex flex-col flex-grow gap-6 md:gap-0 md:grow bg-[#1E1E1E] md:max-h-[calc(100vh-7.5rem)] overflow-y-auto relative">
-      <h3 class="px-7 pt-6 md:hidden">
-        // {{ $route.query.section }}
-        <span class="text-[#607B96]">
-          / {{ $route.query.option }}
-        </span>
-      </h3>
       <div class="md:flex md:items-start" v-if="$route.path === '/about'">
         <div class="hidden md:flex my-10 ml-10 md:my-5 overflow-y-hidden shrink-0 text-[#607B96] ">
-          <ol>
-            <li v-for="i in 60" class="flex text-[#858585]">
+          <ol class="hidden md:block lg:hidden">
+            <li v-for="i in 88" class="flex text-[#858585]">
+              <span class="text-right w-4">{{ i }}</span>
+              <span class="w-10"></span>
+            </li>
+          </ol>
+          <ol class="hidden lg:block">
+            <li v-for="i in 68" class="flex text-[#858585]">
               <span class="text-right w-4">{{ i }}</span>
               <span class="w-10"></span>
             </li>
           </ol>
         </div>
         <div>
-          <div v-for="(sectionArray, key, id) in info" :key="id" class="px-7 pb-6 md:pl-0">
-            <div v-for="{ id, name, data } in sectionArray" class="flex flex-col" :id="[key, id].join('-')">
+          <div v-for="(section) in ABOUT_DATA" :key="section.id" class="px-7 pb-6 md:pl-0">
+            <div v-for="{ id, name, data } in section.data" class="flex flex-col" :id="[name, id].join('-')">
               <br />
               <highlight-code class="text-[#43D9AD]" language="typescript" :code="`const ${name} = [`" />
 
@@ -133,11 +85,4 @@ function scrollTo(id: string) {
       </div>
     </section>
   </div>
-
 </template>
-<style>
-.bulleted-text {
-  list-style-type: disc;
-  list-style-position: inside;
-}
-</style>

@@ -6,7 +6,10 @@ export default defineEventHandler(async (event) => {
     const client = serverSupabaseClient<Database>(event);
     const { data: projects, error } = await client.from("projects").select("*");
     if (error) throw error;
-    return projects;
+    return projects.map((project) => ({
+      ...project,
+      tags: project.tags.split(","),
+    }));
   } catch (error) {
     console.error(error);
     throw error;
